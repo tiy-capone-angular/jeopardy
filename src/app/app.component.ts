@@ -9,13 +9,16 @@ import { IAnswer } from './models/answer';
 })
 export class AppComponent {
 
+  score: number;
   answer: IAnswer;
   error;
   message: string;
+  userReply: string;
 
   constructor(
     private dataService: JeopardyDataService
   ) {
+    this.score = 0;
   }
 
   getAnswer(): void {

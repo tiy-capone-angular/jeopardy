@@ -1,13 +1,18 @@
 <button (click)="getAnswer()">
   Get next answer
 </button>
+<p>Your score: ${{ score }}</p>
 
 <!-- Only display all of this when there is a
      value in answer in the component. -->
-<p>Your score: ???</p>
-<h1>Put category name here</h1>
-<p>Put question here</p>
-<div>
-  <input type="text" placeholder="answer here">
-  <button>Check answer</button>
+<div *ngIf="answer">
+  <h1>{{ answer.category.title }}</h1>
+  <p>{{ answer.question }}</p>
+  <p>This is worth ${{ answer.value }}</p>
+  <div>
+    <input type="text"
+           placeholder="answer here"
+           [(ngModel)]="userReply">
+    <button (click)="checkReply()">Check answer</button>
+  </div>
 </div>
