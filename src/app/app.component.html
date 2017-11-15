@@ -1,6 +1,13 @@
 <button (click)="getAnswer()">
   Get next answer
 </button>
-<div>{{ answer | json }}</div>
-<div style="background-color: red; color: white;">{{ error | json }}</div>
-<div>{{ message }}</div>
+
+<!-- Only display all of this when there is a
+     value in answer in the component. -->
+<p>Your score: ???</p>
+<h1>Put category name here</h1>
+<p>Put question here</p>
+<div>
+  <input type="text" placeholder="answer here">
+  <button>Check answer</button>
+</div>
