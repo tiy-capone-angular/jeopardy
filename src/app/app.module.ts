@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
+import { JeopardyDataService } from './jeopardy-data/jeopardy-data.service';
 
 
 @NgModule({
@@ -10,9 +11,12 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    JeopardyDataService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
