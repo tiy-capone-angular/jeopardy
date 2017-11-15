@@ -14,6 +14,7 @@ export class AppComponent {
   error;
   message: string;
   userReply: string;
+  hint: string;
 
   constructor(
     private dataService: JeopardyDataService
@@ -21,14 +22,37 @@ export class AppComponent {
     this.score = 0;
   }
 
+  checkReply() {
+    // check if answer is good
+    // if so,
+      // add value to score
+      // get a new answer
+    // otherwise
+      // just insult them
+    let good = this.answer.answer.toLowerCase() === this.userReply.toLowerCase();
+    if (good) {
+      this.score += this.answer.value;
+      this.answer = null;
+      this.userReply = '';
+      this.hint = '';
+      this.getAnswer();
+    } else {
+      this.message = 'You are as dumb as you are pretty.';
+    }
+  }
+
   getAnswer(): void {
     let observable = this.dataService
       .getNextAnswer();
+    this.hint = '';
 
     setTimeout(() => {
       observable
         .subscribe(
-          o => this.answer = o,
+          o => {
+            this.answer = o;
+            setTimeout(() => this.hint = this.answer.answer, 5000);
+          },
           e => this.error = e,
           () => this.message = 'Done'
         );

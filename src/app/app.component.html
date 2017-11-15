@@ -15,4 +15,5 @@
            [(ngModel)]="userReply">
     <button (click)="checkReply()">Check answer</button>
   </div>
+  <div *ngIf="hint">The answer may be "{{ hint }}"</div>
 </div>
